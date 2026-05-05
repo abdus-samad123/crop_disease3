@@ -42,7 +42,7 @@ if not st.session_state.logged_in:
     </style>
     """, unsafe_allow_html=True)
 
-    st.title("🌾 Farmers Crop detection Portal")
+    st.title("🌾 Farmers Crops Detection Portal")
 
     tab1, tab2, tab3 = st.tabs(["🔐 Login", "📝 Register", "🔁 Forgot Password"])
 
