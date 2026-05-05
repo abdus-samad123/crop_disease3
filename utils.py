@@ -1,28 +1,43 @@
 import requests
 
-# 🔑 REPLACE THIS with your real API key
-API_KEY = "9f244592efe26bbd55cf0f9ddaeb63d6"
+API_KEY = "9f244592efe26bbd55cf0f9ddaeb63d6"  # 🔴 Put your OpenWeatherMap API key here
+
 
 def get_weather(city):
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
+    """
+    Returns:
+        temp (°C)
+        humidity (%)
+        rainfall (mm) -> next 24 hours forecast
+    """
 
     try:
+        # 🌐 Forecast API (better than current weather)
+        url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={API_KEY}&units=metric"
+
         response = requests.get(url)
         data = response.json()
 
-        # ❌ Handle API errors properly
-        if response.status_code != 200:
-            raise Exception(data.get("message", "API error"))
+        # ❌ Handle invalid city / API error
+        if response.status_code != 200 or "list" not in data:
+            raise Exception("Invalid city or API issue")
 
-        # ✅ Extract values safely
-        temp = data["main"]["temp"]
-        humidity = data["main"]["humidity"]
+        # 🌡 Current data (first time slot)
+        current = data["list"][0]
 
+        temp = current["main"]["temp"]
+        humidity = current["main"]["humidity"]
+
+        # 🌧 Rainfall calculation (next 24 hours)
         rainfall = 0
-        if "rain" in data:
-            rainfall = data["rain"].get("1h", 0)
+
+        for item in data["list"][:8]:  # 8 * 3h = 24h
+            if "rain" in item:
+                rainfall += item["rain"].get("3h", 0)
+
+        rainfall = round(rainfall, 2)
 
         return temp, humidity, rainfall
 
     except Exception as e:
-        raise Exception(f"Weather fetch failed: {str(e)}")
+        raise Exception(f"Weather fetch error: {str(e)}")
