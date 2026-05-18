@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = "9f244592efe26bbd55cf0f9ddaeb63d6"  # 🔴 Put your OpenWeatherMap API key here
+API_KEY = "9f244592efe26bbd55cf0f9ddaeb63d6"  # 
 
 
 def get_weather(city):
@@ -18,17 +18,17 @@ def get_weather(city):
         response = requests.get(url)
         data = response.json()
 
-        # ❌ Handle invalid city / API error
+        # Handle invalid city / API error
         if response.status_code != 200 or "list" not in data:
             raise Exception("Invalid city or API issue")
 
-        # 🌡 Current data (first time slot)
+        # Current data (first time slot)
         current = data["list"][0]
 
         temp = current["main"]["temp"]
         humidity = current["main"]["humidity"]
 
-        # 🌧 Rainfall calculation (next 24 hours)
+        #Rainfall calculation (next 24 hours)
         rainfall = 0
 
         for item in data["list"][:8]:  # 8 * 3h = 24h
