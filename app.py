@@ -223,7 +223,7 @@ if st.sidebar.button("Logout", key="logout_btn"):
 # HEADER
 # -------------------------------
 st.markdown(
-    "##PragyanAI Crop Intelligence Dashboard"
+    "PragyanAI Crop Intelligence Dashboard"
 )
 
 model = load_model()
