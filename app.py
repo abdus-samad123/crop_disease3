@@ -55,7 +55,7 @@ if not st.session_state.logged_in:
     </style>
     """, unsafe_allow_html=True)
 
-    st.title("🌾 Farmers Crops Detection Portal")
+    st.title("Farmers Crops Detection Portal")
 
     tab1, tab2, tab3 = st.tabs([
         "🔐 Login",
@@ -135,7 +135,7 @@ if not st.session_state.logged_in:
 
             if success:
 
-                st.success("✅ Registered! Now login.")
+                st.success("Registered! Now login.")
 
             else:
 
@@ -212,9 +212,9 @@ st.markdown("""
 # -------------------------------
 # SIDEBAR
 # -------------------------------
-st.sidebar.title("🔐 Account")
+st.sidebar.title("Account")
 
-if st.sidebar.button("🚪 Logout", key="logout_btn"):
+if st.sidebar.button("Logout", key="logout_btn"):
 
     st.session_state.logged_in = False
     st.rerun()
@@ -223,7 +223,7 @@ if st.sidebar.button("🚪 Logout", key="logout_btn"):
 # HEADER
 # -------------------------------
 st.markdown(
-    "## 🌾 PragyanAI Crop Intelligence Dashboard"
+    "##PragyanAI Crop Intelligence Dashboard"
 )
 
 model = load_model()
@@ -240,13 +240,13 @@ city = st.sidebar.text_input(
 )
 
 crop = st.sidebar.selectbox(
-    "🌾 Crop",
+    "Crop",
     ["Rice", "Wheat", "Corn"],
     key="crop"
 )
 
 stage = st.sidebar.selectbox(
-    "🌱 Growth Stage",
+    "Growth Stage",
     [
         "Seedling",
         "Vegetative",
@@ -262,7 +262,7 @@ col1, col2, col3 = st.columns(3)
 # ANALYZE RISK
 # -------------------------------
 if st.sidebar.button(
-    "🚀 Analyze Risk",
+    "Analyze Risk",
     key="analyze_btn"
 ):
 
@@ -364,10 +364,10 @@ if file:
             "level": "error",
 
             "solution": """
-✅ Spray copper fungicide  
-✅ Remove infected leaves  
-✅ Avoid excess moisture  
-✅ Improve airflow around plants
+ Spray copper fungicide  
+ Remove infected leaves  
+ Avoid excess moisture  
+ Improve airflow around plants
 """
         },
 
@@ -379,10 +379,10 @@ if file:
             "level": "warning",
 
             "solution": """
-✅ Use neem oil spray  
-✅ Avoid wet leaves  
-✅ Use balanced fertilizer  
-✅ Remove damaged leaf areas
+ Use neem oil spray  
+ Avoid wet leaves  
+ Use balanced fertilizer  
+ Remove damaged leaf areas
 """
         },
 
@@ -394,10 +394,10 @@ if file:
             "level": "warning",
 
             "solution": """
-✅ Spray sulfur fungicide  
-✅ Increase sunlight exposure  
-✅ Reduce humidity around crop  
-✅ Remove infected parts quickly
+Spray sulfur fungicide  
+Increase sunlight exposure  
+Reduce humidity around crop  
+Remove infected parts quickly
 """
         }
     ]
@@ -419,7 +419,7 @@ if file:
             if disease["level"] == "error":
 
                 st.error(
-                    f"🦠 Disease Detected: {disease['name']}"
+                    f" Disease Detected: {disease['name']}"
                 )
 
             else:
@@ -432,7 +432,7 @@ if file:
             # SOLUTION
             # -------------------------------
             st.markdown(
-                "### 💊 Recommended Solution"
+                "### Recommended Solution"
             )
 
             st.success(
@@ -449,10 +449,10 @@ if file:
         st.success("🌿 Healthy Leaf")
 
         st.info("""
-✅ Plant looks healthy  
-✅ Maintain regular watering  
-✅ Continue proper nutrient supply  
-✅ Monitor leaves weekly
+Plant looks healthy  
+Maintain regular watering  
+Continue proper nutrient supply  
+Monitor leaves weekly
 """)
 
 # -------------------------------
@@ -484,5 +484,5 @@ c2.bar_chart(
 st.markdown("---")
 
 st.markdown(
-    "🚀 AI predicts crop disease before it happens"
+    " AI predicts crop disease before it happens"
 )
