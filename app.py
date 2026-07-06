@@ -55,7 +55,7 @@ if not st.session_state.logged_in:
     </style>
     """, unsafe_allow_html=True)
 
-    st.title("Farmers Crops Detection Portal")
+    st.title("Crop Disease & Pest Prediction Analytics")
 
     tab1, tab2, tab3 = st.tabs([
         "🔐 Login",
